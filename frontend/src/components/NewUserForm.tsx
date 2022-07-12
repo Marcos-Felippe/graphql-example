@@ -15,6 +15,7 @@ const CREATE_USER = gql`
 export function NewUserForm() {
 
     const [name, setName] = useState('');
+    // const [createUser, { data, loding, error }] = useMutation(CREATE_USER);
     const [createUser] = useMutation(CREATE_USER);
 
     async function handleCreateUser(event: FormEvent) {
@@ -28,9 +29,11 @@ export function NewUserForm() {
             variables: {
                 name,
             },
+
+            // Fazendo uma nova request na api para pefar os novos dados
             //refetchQueries: [GET_USER],
 
-            // pegando os dados do usuario criado e adiconando na lista de usuarios em cache sem a necessidade de fazer outra request ao server
+            // Pegando os dados do usuario criado e adiconando na lista de usuarios em cache sem a necessidade de fazer outra request no server
             update: (cache, { data: { createUser } }) => {
                 const { users } = client.readQuery({ query: GET_USER });
                 cache.writeQuery({
@@ -44,11 +47,15 @@ export function NewUserForm() {
                 })
 
             }
+
+            
         });
+
+        setName('');
     }
 
     return (
-        <form onSubmit={handleCreateUser}>
+        <form onSubmit={ handleCreateUser }>
             <input type="text" value={name} onChange={e => setName(e.target.value)} />
             <button type="submit">Enviar</button>
         </form>

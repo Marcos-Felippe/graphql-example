@@ -2,6 +2,11 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import crypto from 'crypto';
 import { User } from "../models/User";
 
+// Os Resolvers do Graphql podem ser associados aos controllers do REST
+
+// Query: buscar dados.
+// Mutation: criar, alterar ou deletar dados.
+
 @Resolver()
 export class UserResolver {
 
