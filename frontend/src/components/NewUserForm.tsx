@@ -30,7 +30,7 @@ export function NewUserForm() {
                 name,
             },
 
-            // Fazendo uma nova request na api para pefar os novos dados
+            // Fazendo uma nova request na api para pegar os novos dados
             //refetchQueries: [GET_USER],
 
             // Pegando os dados do usuario criado e adiconando na lista de usuarios em cache sem a necessidade de fazer outra request no server
